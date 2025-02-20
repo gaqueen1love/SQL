@@ -1,3 +1,5 @@
+#Shenitia's First SQL Portfolio Project
+# #Welcome to my SQL Portfolio. This repository contains examples of SQL I've written for a fictional Superstore Dabase that I made. 
 # SQL
 SQL Portfolio
 CREATE TABLE superstore (
@@ -51,4 +53,7 @@ WHERE stock_quantity < 30;
 Select AVG(price) AS average_price
 From superstore;
 
-
+--Show a statistic about the price for items in the category of "Kitchen Supplies". 
+SELECT avg(price)
+FROM superstore
+WHERE category="Kitchen Supplies"
