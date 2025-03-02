@@ -1,0 +1,50 @@
+--This query count unique orders that were placed in January
+SELECT COUNT(distinct orderid)
+FROM BIT_DB.JanSales
+WHERE length(orderid) = 6
+AND orderid <> 'Order ID';
+
+--This query counts how many orders where iPhones
+SELECT COUNT(distinct orderid)
+FROM BIT_DB.JanSales
+WHERE Product='iPhone'
+AND length(orderid) = 6
+AND orderid <> 'Order ID';
+
+--This query select the customer numbers for all the orders that were place in February
+Select distinct acctnum
+FROM BIT_DB.customers
+Inner Join BIT_DB.FebSales
+ON customers.order_id=FebSales.orderID
+AND orderid <> 'Order ID';
+
+-- This query finds the cheaptest product sold in January and the price of the product
+SELECT product, min(price)
+FROM BIT_DB.JanSales Jan
+GROUP BY product, price
+ORDER BY price ASC
+LIMIT 1;
+
+--This query calculates total revenue for each product sold in January
+SELECT sum(quantity),2 *price as revenue
+,product
+FROM BIT_DB.JanSales
+GROUP BY product;
+
+--This query shows the products sold in February from location 548 Lincoln St, Seattle, WA 98101, how many of each product were sold, and the total revenue
+SELECT sum(quantity),2 *price as revenue
+,product, location
+FROM BIT_DB.FebSales
+Where location = "548 Lincoln St, Seattle, WA 98101"
+Group By product;
+
+--This query shows how many customers ordered more than 2 roducts at a time in February, and what was the average amount spent for those customers
+SELECT
+count(distinct cust.acctnum),
+avg(quantity*price)
+FROM BIT_DB.FebSales Feb
+LEFT JOIN BIT_DB.customers cust
+ON FEB.orderid=cust.order_id
+WHERE Feb.Quantity>2
+AND length(orderid) = 6
+AND orderid <> 'Order ID';
