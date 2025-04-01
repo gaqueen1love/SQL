@@ -1,5 +1,5 @@
 --These are some queries I ran from the final SQL Project. The data came from a dataset named chinook
---which represents a digital media store and included tables for artits, albums, media tracks, invoices
+--which represents a digital media store and included tables for artist, albums, media tracks, invoices
 --and customers. 
 
 --1.Query customers full names, customerID, and country who are not in the USA
