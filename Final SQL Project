@@ -2,7 +2,7 @@
 --which represents a digital media store and included tables for artits, albums, media tracks, invoices
 --and customers. 
 
---1.Query customers full names, customerID, and country who are notin the USA
+--1.Query customers full names, customerID, and country who are not in the USA
 SELECT CustomerId, FirstName || ' ' || LastName AS FullName, Country
 FROM customers
 WHERE Country <> 'USA';
